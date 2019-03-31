@@ -14,7 +14,7 @@ public class AnyController {
 
     @GetMapping
     public Map<String,Object> sayHelloWorld(){
-        System.out.println("hello world!5566");
+        System.out.println("hello world! pg see");
         Map<String,Object> result = new HashMap<>();
         result.put("pg_key1111","pg_value1111");
         Calendar calendar = Calendar.getInstance();
