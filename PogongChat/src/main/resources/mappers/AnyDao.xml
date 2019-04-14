@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pogong.PogongChat.Dao.AnyDao">
+
+    <resultMap id="TvSeriesResultMap" type="com.pogong.PogongChat.Pojo.AnyObj">
+        <result column="season_count" property="seasonCount" />
+        <result column="origin_release" property="originRelease" />
+    </resultMap>
+
+    <select id="getAll" resultMap="TvSeriesResultMap">
+        select * from tv_series
+    </select>
+
+</mapper>
