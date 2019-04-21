@@ -5,24 +5,10 @@
 
 <configuration>
 
-    <properties resource="jdbc.properties" />
-
-    <!--配置加载的环境，可以配置多套环境，设置id名称，默认加载development环境-->
-    <environments default="development">
-
-        <environment id="development">
-            <!--事务管理器-->
-            <transactionManager type="JDBC"/>
-            <!--数据源 连接池配置-->
-            <dataSource type="POOLED">
-                <property name="driver" value="${jdbc.driver}" />
-                <property name="url" value="${jdbc.url}" />
-                <property name="username" value="${jdbc.username}" />
-                <property name="password" value="${jdbc.password}" />
-            </dataSource>
-        </environment>
-
-    </environments>
+     <!--设置包扫描(别名)-->
+    <typeAliases>
+        <package name="com.pogong.PogongChat.Pojo"/>
+    </typeAliases>
 
     <!--配置SQL映射文件-->
     <mappers>
