@@ -1,12 +1,16 @@
 package com.pogong.PogongChat.Pojo;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
+import javax.validation.groups.Default;
 import java.util.Date;
-import java.util.List;
+import com.pogong.PogongChat.Common.Groups;
 
 public class AnyObj {
-    private Integer id;
-    private String name;
-    private int seasonCount;
+    @Null(groups = {Groups.addStep1.class}) private Integer id;
+    @NotNull(groups = {Groups.addStep2.class}) private String name;
+    @Min(value = 1,groups = {Groups.addStep1.class,Groups.addStep2.class}) private int seasonCount;
     private Date originRelease;
 
     public Integer getId() {

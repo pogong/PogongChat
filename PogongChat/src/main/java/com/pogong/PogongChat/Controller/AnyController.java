@@ -1,15 +1,16 @@
 package com.pogong.PogongChat.Controller;
 
+import com.pogong.PogongChat.Common.Groups;
 import com.pogong.PogongChat.Pojo.AnyObj;
 import com.pogong.PogongChat.Service.AnyService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ibatis.io.Resources;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
@@ -47,4 +48,17 @@ public class AnyController {
         return list;
     }
 
+    @PostMapping("/add_obj1")
+    public int add_obj1(@Validated({Groups.addStep1.class}) @RequestBody AnyObj anyObj) {
+        System.out.println("pg see add_obj1");
+        System.out.println(anyObj);
+        return  1;
+    }
+
+    @PostMapping("/add_obj2")
+    public int add_obj2(@Validated({Groups.addStep2.class}) @RequestBody AnyObj anyObj) {
+        System.out.println("pg see add_obj2");
+        System.out.println(anyObj);
+        return  1;
+    }
 }
