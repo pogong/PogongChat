@@ -5,14 +5,9 @@ import com.pogong.PogongChat.Pojo.AnyObj;
 import com.pogong.PogongChat.Service.AnyService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.ibatis.io.Resources;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.*;
 
 @RestController

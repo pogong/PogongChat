@@ -5,6 +5,19 @@ spring:
     serialization:
       write-dates-as-timestamps: true  #使用数值timestamp表示日期，true时会忽略date-format
 
+  cache:
+    redis:
+      time-to-live: 300s
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: 10000
+        max-idle: 10
+
 logging:
   file: target/app.log
   level:

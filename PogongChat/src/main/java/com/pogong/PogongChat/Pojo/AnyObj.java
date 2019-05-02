@@ -12,25 +12,25 @@ public class AnyObj {
     @NotNull(groups = {Groups.addStep2.class}) private String name;
     @Min(value = 1,groups = {Groups.addStep1.class,Groups.addStep2.class}) private int seasonCount;
     private Date originRelease;
+    private String deleteReason;
 
-    public Integer getId() {
-        return id;
-    }
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
+
     public String getName() {
         return name;
     }
     public void setName(String name) {
         this.name = name;
     }
+
     public int getSeasonCount() {
         return seasonCount;
     }
     public void setSeasonCount(int seasonCount) {
         this.seasonCount = seasonCount;
     }
+
     public Date getOriginRelease() {
         return originRelease;
     }
@@ -38,11 +38,15 @@ public class AnyObj {
         this.originRelease = originRelease;
     }
 
+    public  String getDeleteReason(){ return  deleteReason; }
+    public  void setDeleteReason(String deleteReason){ this.deleteReason = deleteReason; }
+
     @Override
     public String toString() {
         StringBuffer buf = new StringBuffer();
         buf.append(this.getClass().getName()).append("{id:").append(id);
         buf.append(",name:").append(name).append(",seasonCount:").append(seasonCount);
+        buf.append(",deleteReason:").append(deleteReason);
         buf.append("}");
         return buf.toString();
     }

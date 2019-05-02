@@ -7,6 +7,7 @@
     <resultMap id="TvSeriesResultMap" type="com.pogong.PogongChat.Pojo.AnyObj">
         <result column="season_count" property="seasonCount" />
         <result column="origin_release" property="originRelease" />
+        <result column="delete_reason" property="deleteReason" />
     </resultMap>
 
     <select id="getAll" resultMap="TvSeriesResultMap">
