@@ -13,4 +13,12 @@
         select * from tv_series
     </select>
 
+    <select id="getOneById" parameterType="int" resultMap="TvSeriesResultMap">
+        select * from tv_series where id=#{id}
+    </select>
+
+    <select id="logicDelete">
+        UPDATE tv_series set delete_reason=#{reason} where id=#{id}
+    </select>
+
 </mapper>

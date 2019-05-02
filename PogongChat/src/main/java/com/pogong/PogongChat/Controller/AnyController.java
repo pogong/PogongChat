@@ -38,14 +38,14 @@ public class AnyController {
     AnyService anyService;
 
     @GetMapping("/test_mybaits")
-    public List<AnyObj> test_mybaits() {
+    public int test_mybaits() {
         List<AnyObj> list = anyService.getAll();
         for (AnyObj obj : list) {
             System.out.println("pg see");
             System.out.println(obj);
         }
 
-        return list;
+        return 1;
     }
 
     @PostMapping("/add_obj1")
@@ -59,6 +59,19 @@ public class AnyController {
     public int add_obj2(@Validated({Groups.addStep2.class}) @RequestBody AnyObj anyObj) {
         System.out.println("pg see add_obj2");
         System.out.println(anyObj);
-        return  1;
+        return  2;
+    }
+
+    @GetMapping("/get/{id}")
+    public AnyObj getOneById(@PathVariable int id) {
+        System.out.println("pg see Controller getOneById");
+        return anyService.getOneById(id);
+    }
+
+    @GetMapping("/logicDelete/{id}")
+    public int logicDelete(@PathVariable int id,@RequestParam("reason") String reason) {
+        System.out.println("pg see Controller logicDelete");
+        anyService.logicDelete(id,reason);
+        return 1;
     }
 }
