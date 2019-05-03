@@ -25,7 +25,7 @@ logging:
     com.pogong: TRACE
 
 jdbc:
-  url: jdbc:mysql://localhost:3306/jdbc_db?rewriteBatchedStatements=true&characterEncoding=utf8
+  url: jdbc:mysql://localhost:3306/pogongchat?rewriteBatchedStatements=true&characterEncoding=utf8
   username: root
   password: 123456
   driver-class-name: com.mysql.jdbc.Driver

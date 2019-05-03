@@ -13,6 +13,7 @@
     <!--配置SQL映射文件-->
     <mappers>
         <mapper resource="mappers/AnyDao.xml"/>
+        <mapper resource="mappers/UserDao.xml"/>
     </mappers>
 
 </configuration>
