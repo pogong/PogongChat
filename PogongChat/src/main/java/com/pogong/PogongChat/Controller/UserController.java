@@ -9,7 +9,9 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -29,7 +31,7 @@ public class UserController {
         user.setGender(gender);
         ExecuteResult er = userService.register(user);
         if (er.getCode() < 0){
-            return this.createReturnData(0,null,er.getCode(),er.getDesc());
+            return this.createReturnData(-1,null,er.getCode(),er.getDesc());
         }else{
             int user_id = user.getUser_id();
             System.out.println("UserController register succ and get user_id>"+user_id);
@@ -45,9 +47,39 @@ public class UserController {
         }
         ExecuteResult er = userService.login(name,password);
         if (er.getCode() < 0){
-            return this.createReturnData(0,null,er.getCode(),er.getDesc());
+            return this.createReturnData(-1,null,er.getCode(),er.getDesc());
         }else{
             return this.createReturnData(1,null,0,null);
+        }
+    }
+
+    @GetMapping("/search")
+    public Map search(@RequestParam("name") String name){
+        System.out.println("UserController search >"+name);
+        ExecuteResult er = userService.search(name);
+        List<User> userList = (List<User>) er.getInfo().get("list");
+        List<Map> returnList = new ArrayList<Map>();
+        for(User user:userList){
+            returnList.add(MapUtil.objectToMap(user));
+        }
+        Map<String,List> data =  new HashMap<>();
+        data.put("list",returnList);
+        return this.createReturnData(1,data,0,null);
+    }
+
+    @GetMapping("/getUserByID")
+    public Map getUserByID(@RequestParam("user_id")Integer user_id) {
+        if (log.isTraceEnabled()){
+            log.trace("UserController getUserByID 被调用了>"+user_id);
+        }
+        ExecuteResult er = userService.getUserByID(user_id);
+        if (er.getCode() < 0){
+            return this.createReturnData(-1,null,er.getCode(),er.getDesc());
+        }else{
+            User user = (User) er.getInfo().get("user");
+            Map<String,Map> map = new HashMap<>();
+            map.put("user",MapUtil.objectToMap(user));
+            return this.createReturnData(1,map,0,null);
         }
     }
 

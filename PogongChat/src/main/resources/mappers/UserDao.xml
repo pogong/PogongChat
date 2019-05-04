@@ -16,4 +16,12 @@
         select count(*) from user where name=#{name} and password=#{password}
     </select>
 
+    <select id="search" parameterType="String" resultType="com.pogong.PogongChat.Pojo.User">
+        select * from user where name like CONCAT('%',#{text},'%')
+    </select>
+
+    <select id="getUserByID" resultType="com.pogong.PogongChat.Pojo.User">
+        select * from user where user_id=#{user_id}
+    </select>
+
 </mapper>
